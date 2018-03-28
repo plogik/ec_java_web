@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Customers</title>
+</head>
+<body>
+    <th:block th:each="customer : ${customers}">
+        <div th:object="${customer}">
+            <span th:each="account : *{accounts}"
+                  th:text="|${account.accountNbr} ,|">12345</span>
+            <span th:text="*{fname}">dummy</span>
+            <span th:text="*{lname}">dummy</span>
+        </div>
+    </th:block>
+</body>
+</html>

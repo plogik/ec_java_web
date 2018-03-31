@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="layouts/main">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Customers</title>
 </head>
 <body>
-    <th:block th:each="customer : ${customers}">
-        <div th:object="${customer}">
-            <span th:each="account : *{accounts}"
-                  th:text="|${account.accountNbr} ,|">12345</span>
-            <span th:text="*{fname}">dummy</span>
-            <span th:text="*{lname}">dummy</span>
-        </div>
-    </th:block>
+<td layout:fragment="content">
+    <table class="table">
+        <tbody>
+        <th:block th:each="customer : ${customers}">
+            <tr th:object="${customer}">
+                <td>
+                    <span th:each="account : *{accounts}" th:text="|${account.accountNbr}, |" th:remove="tag"></span>
+                </td>
+                <td>
+                    <span th:text="*{fname}" th:remove="tag">Dummy</span>
+                </td>
+                <td>
+                    <span th:text="*{lname}" th:remove="tag">Dummy</span>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

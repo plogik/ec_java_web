@@ -5,14 +5,12 @@
         layout:decorate="layouts/main">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>Title</title>
 </head>
 <body>
-<div layout:fragment="content">
-    jkljkljkl
-    <div class="jumbotron">
-        <h1>Welcome!</h1>
+    <div layout:fragment="content">
+        <div th:text="${customer.fname}">Förnamn</div>
+        <div th:text="${customer.lname}">Efternamn</div>
     </div>
-</div>
 </body>
 </html>

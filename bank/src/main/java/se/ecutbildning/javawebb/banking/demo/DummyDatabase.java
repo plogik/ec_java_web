@@ -31,6 +31,7 @@ public class DummyDatabase {
         Random rnd = new Random(System.currentTimeMillis());
 
         Customer c1 = new Customer();
+        c1.setCustomerNo(1L);
         c1.setFname("Kalle");
         c1.setLname("Andreasson");
         c1.setCity("Malmö");
@@ -51,6 +52,7 @@ public class DummyDatabase {
 
 
         Customer c2 = new Customer();
+        c2.setCustomerNo(2L);
         c2.setFname("Lisa");
         c2.setLname("Svensson");
         c2.setCity("Helsingborg");

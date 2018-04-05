@@ -13,6 +13,13 @@ public class Customer {
     private String email;
     private List<Account> accounts;
 
+    public Customer() {
+    }
+
+    public Customer(Long customerNo) {
+        this.customerNo = customerNo;
+    }
+
     public Long getCustomerNo() {
         return customerNo;
     }

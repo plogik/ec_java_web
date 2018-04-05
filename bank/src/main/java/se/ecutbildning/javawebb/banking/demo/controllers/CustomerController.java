@@ -18,4 +18,14 @@ public class CustomerController {
         model.addAttribute("customers", db.getCustomers());
         return "customer/list";
     }
+
+    @GetMapping("findById/{customerid}")
+    public String findById(@PathVariable Long customerid, Model model) {
+        int index = db.getCustomers().indexOf(new Customer(customerid));
+        if(index == -1) {
+
+        }
+        model.addAttribute("customer", db.getCustomers().get(index));
+        return "customer/view";
+    }
 }

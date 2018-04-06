@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Pet list</title>
+</head>
+<body>
+    <th:block th:each="pet : ${pets}">
+        <div th:object="${pet}">
+            <span th:text="*{name}">name</span>
+        </div>
+    </th:block>
+</body>
+</html>

@@ -16,8 +16,8 @@ public class PetController {
     @Autowired
     private PetRepository petRepository;
 
-    //@Value("petstore.list.pagesize")
-    private int pageSize = 10;
+    @Value("${petstore.list.pagesize}")
+    private int pageSize;
 
     @GetMapping("list")
     public String list(@RequestParam(required = false) Integer page, Model model) {

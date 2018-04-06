@@ -26,4 +26,13 @@ public class PetController {
                         PageRequest.of(page != null ? page : 0, pageSize)));
         return "pet/list";
     }
+
+    @GetMapping("byname")
+    private String byname(@RequestParam(required = false) String name,
+                          @RequestParam(required = false) String breed,
+                          Model model) {
+        model.addAttribute("pets",
+                petRepository.findCustom(breed));
+        return "pet/list";
+    }
 }

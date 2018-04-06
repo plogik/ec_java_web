@@ -9,6 +9,7 @@
     <th:block th:each="pet : ${pets}">
         <div th:object="${pet}">
             <span th:text="*{name}">name</span>
+            <span th:text="*{breed}">breed</span>
         </div>
     </th:block>
 </body>

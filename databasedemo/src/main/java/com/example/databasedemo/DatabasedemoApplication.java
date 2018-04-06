@@ -25,6 +25,9 @@ public class DatabasedemoApplication {
                 pets.add(new Pet().setBreed("Cat").setName("Missan " + i));
             }
             petRepository.saveAll(pets);
+
+            petRepository.save(new Pet().setBreed("Hund").setName("Fido"));
+            petRepository.save(new Pet().setBreed("Hund").setName("Isak"));
         };
     }
 }

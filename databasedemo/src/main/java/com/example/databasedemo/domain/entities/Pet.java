@@ -1,17 +1,16 @@
 package com.example.databasedemo.domain.entities;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Pet {
+
+    public enum Gender { Female, Male }
+
     private Long id;
     private String breed;
     private String name;
+    private Gender gender;
 
     @Id
     @GeneratedValue
@@ -39,6 +38,16 @@ public class Pet {
 
     public Pet setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    @Enumerated(EnumType.STRING)
+    public Gender getGender() {
+        return gender;
+    }
+
+    public Pet setGender(Gender gender) {
+        this.gender = gender;
         return this;
     }
 }

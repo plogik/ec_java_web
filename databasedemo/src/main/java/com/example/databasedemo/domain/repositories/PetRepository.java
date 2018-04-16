@@ -2,7 +2,6 @@ package com.example.databasedemo.domain.repositories;
 
 import com.example.databasedemo.domain.entities.Pet;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
@@ -21,6 +20,7 @@ public interface PetRepository extends PagingAndSortingRepository<Pet, Long> {
     List<Pet> findByBreedIgnoreCase(String breed);
     List<Pet> findByNameOrBreedAllIgnoreCase(String name, String breed);
     List<Pet> findByNameAndBreed(String name, String breed);
+    List<Pet> findByGender(Pet.Gender gender);
 
     @Query("select p from Pet p where breed=?1")
     List<Pet> findCustom(String breed);

@@ -1,5 +1,6 @@
 package com.example.databasedemo.controllers;
 
+import com.example.databasedemo.domain.entities.Pet;
 import com.example.databasedemo.domain.repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,6 +34,12 @@ public class PetController {
                           Model model) {
         model.addAttribute("pets",
                 petRepository.findCustom(breed));
+        return "pet/list";
+    }
+
+    @GetMapping("byGender")
+    public String byGender(@RequestParam Pet.Gender gender, Model model) {
+        model.addAttribute("pets", petRepository.findByGender(gender));
         return "pet/list";
     }
 }

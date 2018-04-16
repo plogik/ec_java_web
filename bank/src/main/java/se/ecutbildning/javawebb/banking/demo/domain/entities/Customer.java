@@ -1,9 +1,14 @@
 package se.ecutbildning.javawebb.banking.demo.domain.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 
+@Entity
 public class Customer {
-    private Long customerNo;
+    private String personnr;
     private String fname;
     private String lname;
     private String street;
@@ -16,32 +21,32 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Long customerNo) {
-        this.customerNo = customerNo;
+    @Id
+    public String getPersonnr() {
+        return personnr;
     }
 
-    public Long getCustomerNo() {
-        return customerNo;
-    }
-
-    public void setCustomerNo(Long customerNo) {
-        this.customerNo = customerNo;
+    public Customer setPersonnr(String personnr) {
+        this.personnr = personnr;
+        return this;
     }
 
     public String getFname() {
         return fname;
     }
 
-    public void setFname(String fname) {
+    public Customer setFname(String fname) {
         this.fname = fname;
+        return this;
     }
 
     public String getLname() {
         return lname;
     }
 
-    public void setLname(String lname) {
+    public Customer setLname(String lname) {
         this.lname = lname;
+        return this;
     }
 
     public String getStreet() {
@@ -84,6 +89,7 @@ public class Customer {
         this.email = email;
     }
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     public List<Account> getAccounts() {
         return accounts;
     }
@@ -99,12 +105,12 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        return customer.getCustomerNo().equals(getCustomerNo());
+        return customer.getPersonnr().equals(getPersonnr());
     }
 
     @Override
     public int hashCode() {
-        int result = customerNo.hashCode();
+        int result = personnr.hashCode();
         return result;
     }
 }

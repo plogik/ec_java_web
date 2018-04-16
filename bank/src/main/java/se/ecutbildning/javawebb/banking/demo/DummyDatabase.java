@@ -13,10 +13,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-@Component
+/*@Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION,
-        proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class DummyDatabase {
+        proxyMode = ScopedProxyMode.TARGET_CLASS)public class DummyDatabase {
     private List<Customer> customers;
 
     public List<Customer> getCustomers() {
@@ -74,4 +73,4 @@ public class DummyDatabase {
         setCustomers(Arrays.asList(c1, c2));
 
     }
-}
+}*/

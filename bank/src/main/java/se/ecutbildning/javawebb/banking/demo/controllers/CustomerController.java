@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import se.ecutbildning.javawebb.banking.demo.CustomerNotFoundException;
-import se.ecutbildning.javawebb.banking.demo.DummyDatabase;
+//import se.ecutbildning.javawebb.banking.demo.DummyDatabase;
 import se.ecutbildning.javawebb.banking.demo.domain.entities.Customer;
 
 import javax.servlet.http.HttpServletResponse;
@@ -14,22 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-    @Autowired
-    private DummyDatabase db;
+    //@Autowired
+    //private DummyDatabase db;
 
     @GetMapping("list")
     public String list(Model model) {
-        model.addAttribute("customers", db.getCustomers());
+      //  model.addAttribute("customers", db.getCustomers());
         return "customer/list";
     }
 
     @GetMapping("findById/{customerid}")
     public String findById(@PathVariable Long customerid, Model model) {
-        int index = db.getCustomers().indexOf(new Customer(customerid));
+        /*int index = db.getCustomers().indexOf(new Customer(customerid));
         if(index == -1) {
             throw new CustomerNotFoundException();
         }
-        model.addAttribute("customer", db.getCustomers().get(index));
+        model.addAttribute("customer", db.getCustomers().get(index));*/
         return "customer/view";
     }
 

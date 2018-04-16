@@ -22,7 +22,10 @@ public class DatabasedemoApplication {
         return  args -> {
             List<Pet> pets = new ArrayList<Pet>();
             for(int i = 0; i < 100; i++) {
-                pets.add(new Pet().setBreed("Cat").setName("Missan " + i));
+                pets.add(new Pet()
+                        .setBreed("Cat")
+                        .setName("Missan " + i)
+                        .setGender(i % 2 == 0 ? Pet.Gender.Female : Pet.Gender.Male));
             }
             petRepository.saveAll(pets);
 

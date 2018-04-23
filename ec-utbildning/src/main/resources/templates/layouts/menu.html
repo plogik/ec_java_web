@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</head>
+<body>
+
+    <nav class="navbar is-info" th:fragment="menu">
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" th:href="@{/}">
+                        Home
+                    </a>
+
+                    <a class="navbar-item" th:classappend="${#httpServletRequest.getRequestURI().contains('/adress') ? 'is-active':''}" th:href="@{/adress/list}">
+                        Orter
+                    </a>
+                    <a class="navbar-item" th:classappend="${#httpServletRequest.getRequestURI().contains('/utbildning') ? 'is-active':''}" th:href="@{/utbildning/list}">
+                        Utbildningar
+                    </a>
+                    <a class="navbar-item" th:href="@{/kurs}">
+                        Kurser
+                    </a>
+                    <a class="navbar-item" th:href="@{/personal}">
+                        Personal
+                    </a>
+                    <a class="navbar-item" th:href="@{/student}">
+                        Student
+                    </a>
+                </div>
+            </div>
+    </nav>
+
+</body>
+</html>

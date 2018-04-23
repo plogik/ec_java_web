@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Utbildning</title>
+</head>
+<body>
+
+<div class="container" layout:fragment="content">
+    <h1 class="title">
+        <span th:if="${#httpServletRequest.getRequestURI().contains('/edit')}">
+            Redigera
+        </span>
+        <span th:if="${#httpServletRequest.getRequestURI().contains('/create')}">
+            Skapa
+        </span>
+         utbildning
+    </h1>
+    <form method="post" th:object="${utbildningForm}">
+
+        <div class="field">
+            <label class="label">Startdatum</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Startdatum" th:field="*{startdatum}">
+            </div>
+            <p class="help is-danger" th:if="${#fields.hasErrors('startdatum')}" th:errors="*{startdatum}">error</p>
+        </div>
+        <div class="field">
+            <label class="label">Slutdatum</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Slutdatum" th:field="*{slutdatum}">
+            </div>
+            <p class="help is-danger" th:if="${#fields.hasErrors('slutdatum')}" th:errors="*{slutdatum}">error</p>
+        </div>
+        <div class="field">
+            <label class="label">Beskrivning</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Beskrivning" th:field="*{beskrivning}">
+            </div>
+            <p class="help is-danger" th:if="${#fields.hasErrors('beskrivning')}" th:errors="*{beskrivning}">error</p>
+        </div>
+
+        <th:block th:each="adress : ${utbildningForm.allaAdresser}">
+            <div class="field">
+                <div class="control">
+                    <label class="checkbox">
+                        <input type="checkbox" name="adresser" th:value="${adress.id}"
+                               th:checked="${utbildningForm.adresser.contains(adress)}"/>
+                        <span th:text="${adress.gatuadress} + ${adress.ort}" th:remove="tag"></span>
+                    </label>
+                </div>
+            </div>
+        </th:block>
+
+        <div class="field">
+            <div class="control">
+                <div class="select is-multiple">
+                    <select th:name="kurser" multiple size="5">
+                        <th:block th:each="kurs : ${utbildningForm.allaKurser}">
+                            <option th:value="${kurs.kurskod}" th:text="${kurs.kurskod}" th:selected="${utbildningForm.kurser.contains(kurs)}">Kurs</option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button type="submit" class="button is-link is-primary">Spara</button>
+            </div>
+            <div class="control">
+                <a th:href="@{/utbildning/list}" class="button is-text">Avbryt</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Adresser</title>
+</head>
+<body>
+
+<div class="container" layout:fragment="content">
+    <h1 class="title">
+        Utbildningar
+        <div class="is-pulled-right">
+            <a th:href="@{/utbildning/create}" class="button is-dark">
+                <span class="icon is-small">
+                    <i class="fas fa-plus-circle"></i>
+                </span>
+                <span>Ny</span>
+            </a>
+        </div>
+    </h1>
+
+    <table class="table is-hoverable is-fullwidth">
+        <thead>
+        <th>Id</th>
+        <th>Startdatum</th>
+        <th>Slutdatum</th>
+        <th>Orter</th>
+        <th>&nbsp;</th>
+        </thead>
+        <tbody>
+        <tr th:each="utbildning : ${utbildningar}">
+            <td>[[${utbildning.id}]]</td>
+            <td>[[${utbildning.startdatum}]]</td>
+            <td>[[${utbildning.slutdatum}]]</td>
+            <td>
+                <div class="select is-small">
+                <select>
+                    <option th:each="adress : ${utbildning.adresser}" th:text="${adress.ort}">Adress</option>
+                </select>
+                </div>
+            </td>
+            <td>
+                <a th:href="|@{'/utbildning/edit/' + ${utbildning.id}}|" class="button is-small is-outlined">Redigera</a>
+                <a th:href="|@{'/utbildning/confirmdelete/' + ${utbildning.id}}|" class="button is-small is-outlined is-danger">Radera</a>
+            </td>
+        </tr>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

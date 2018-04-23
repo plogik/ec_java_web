@@ -1,60 +1,61 @@
-package se.ecutbildning.utb.ecutbildningar.domain.entities;
+package se.ecutbildning.utb.ecutbildningar.presentation.formmodels;
 
-import javax.persistence.*;
+import se.ecutbildning.utb.ecutbildningar.domain.entities.Utbildning;
+
+import javax.validation.constraints.Size;
 import java.util.List;
 
-@Entity
-public class Adress {
+public class AdressForm {
     private Long id;
     private String gatuadress;
     private String postnr;
     private String ort;
     private List<Utbildning> utbildningar;
 
-    @Id
-    @GeneratedValue
     public Long getId() {
         return id;
     }
 
-    public Adress setId(Long id) {
+    public AdressForm setId(Long id) {
         this.id = id;
         return this;
     }
 
+    @Size(min = 2, max = 255)
     public String getGatuadress() {
         return gatuadress;
     }
 
-    public Adress setGatuadress(String gatuadress) {
+    public AdressForm setGatuadress(String gatuadress) {
         this.gatuadress = gatuadress;
         return this;
     }
 
+    @Size(min = 5, max = 8)
     public String getPostnr() {
         return postnr;
     }
 
-    public Adress setPostnr(String postnr) {
+    public AdressForm setPostnr(String postnr) {
         this.postnr = postnr;
         return this;
     }
 
+    @Size(min = 2, max = 255)
     public String getOrt() {
         return ort;
     }
 
-    public Adress setOrt(String ort) {
+    public AdressForm setOrt(String ort) {
         this.ort = ort;
         return this;
     }
 
-    @ManyToMany(mappedBy = "adresser")
     public List<Utbildning> getUtbildningar() {
         return utbildningar;
     }
 
-    public Adress setUtbildningar(List<Utbildning> utbildningar) {
+    public AdressForm setUtbildningar(List<Utbildning> utbildningar) {
         this.utbildningar = utbildningar;
         return this;
     }

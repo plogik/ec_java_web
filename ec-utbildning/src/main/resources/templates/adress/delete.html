@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Adress</title>
+</head>
+<body>
+
+<div class="container" layout:fragment="content">
+    <h1 class="title">Radera adress</h1>
+    <p class="subtitle">
+        Är du säker på att du vill radera adressen?
+    </p>
+    <form th:action="@{/adress/delete/} + ${adressForm.id}" method="post" th:object="${adressForm}">
+        <div th:text="*{gatuadress}">Gatuadress</div>
+        <div th:text="*{postnr}">Postnr</div>
+        <div th:text="*{ort}">Ort</div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button type="submit" class="button is-link is-danger">Radera</button>
+            </div>
+            <div class="control">
+                <a th:href="@{/adress/list}" class="button is-text">Avbryt</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

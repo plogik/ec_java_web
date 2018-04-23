@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Adress</title>
+</head>
+<body>
+
+<div class="container" layout:fragment="content">
+    <h1 class="title">
+        <span th:if="${#httpServletRequest.getRequestURI().contains('/edit')}">
+            Redigera
+        </span>
+        <span th:if="${#httpServletRequest.getRequestURI().contains('/create')}">
+            Skapa
+        </span>
+         adress
+    </h1>
+    <form method="post" th:object="${adressForm}">
+
+        <div class="field">
+            <label class="label">Gatunamn</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Gatuadress" th:field="*{gatuadress}">
+            </div>
+            <p class="help is-danger" th:if="${#fields.hasErrors('gatuadress')}" th:errors="*{gatuadress}">error</p>
+        </div>
+        <div class="field">
+            <label class="label">Postnummer</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Postnummer" th:field="*{postnr}">
+            </div>
+            <p class="help is-danger" th:if="${#fields.hasErrors('postnr')}" th:errors="*{postnr}">error</p>
+        </div>
+        <div class="field">
+            <label class="label">Ort</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Ort" th:field="*{ort}">
+            </div>
+            <p class="help is-danger" th:if="${#fields.hasErrors('ort')}" th:errors="*{ort}">error</p>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button type="submit" class="button is-link is-primary">Spara</button>
+            </div>
+            <div class="control">
+                <a th:href="@{/adress/list}" class="button is-text">Avbryt</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

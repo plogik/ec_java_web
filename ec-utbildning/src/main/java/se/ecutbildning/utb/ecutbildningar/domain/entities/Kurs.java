@@ -6,21 +6,57 @@ import java.util.List;
 
 @Entity
 public class Kurs {
-    @Id
     private String kurskod;
-
-    @ManyToOne
-    private Utbildning utbildning;
-
     private Date startdatum;
     private Date slutdatum;
-
-    @ManyToMany
     private List<Personal> personal;
+    private Personal huvudansvarig;
+
+    @Id
+    public String getKurskod() {
+        return kurskod;
+    }
+
+    public Kurs setKurskod(String kurskod) {
+        this.kurskod = kurskod;
+        return this;
+    }
+
+    public Date getStartdatum() {
+        return startdatum;
+    }
+
+    public Kurs setStartdatum(Date startdatum) {
+        this.startdatum = startdatum;
+        return this;
+    }
+
+    public Date getSlutdatum() {
+        return slutdatum;
+    }
+
+    public Kurs setSlutdatum(Date slutdatum) {
+        this.slutdatum = slutdatum;
+        return this;
+    }
 
     @ManyToMany
-    private List<Student> studenter;
+    public List<Personal> getPersonal() {
+        return personal;
+    }
+
+    public Kurs setPersonal(List<Personal> personal) {
+        this.personal = personal;
+        return this;
+    }
 
     @OneToOne
-    private Personal huvudansvarig;
+    public Personal getHuvudansvarig() {
+        return huvudansvarig;
+    }
+
+    public Kurs setHuvudansvarig(Personal huvudansvarig) {
+        this.huvudansvarig = huvudansvarig;
+        return this;
+    }
 }
